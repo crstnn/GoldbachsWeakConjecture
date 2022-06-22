@@ -11,7 +11,8 @@ def disprove_conjecture(n) -> tuple[int, int, int] | bool:
     'Odd' as it is not including 2.
     Note that as n increases, more tests are performed on the possible solution space, which increases the likelihood of
     incorrectly declaring a composite number is a prime. This increases the overall chance of returning an invalid
-    triple. This is only of concern if accuracy is paramount, over efficiency. One could, scale the tolerance with n.
+    triple. This is only of concern if accuracy is paramount, over efficiency. One could, scale the number of witnesses
+    with n.
 
     Time complexity: average case is based on (unproven) invariant that there is always a triple with a 3, resting on
     Goldbach's strong (binary) conjecture.

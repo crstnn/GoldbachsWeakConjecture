@@ -9,15 +9,15 @@ globals().update(Primality.__members__)  # puts Primality in the namespace of th
 is_even = lambda n: (n % 2) == 0
 
 
-def primality_test(n: int, probabilistic_tolerance: int = 15) -> Primality:
+def primality_test(n: int, witnesses: int = 15) -> Primality:
     """
     Probabilistic Miller-Rabin test
     The algorithm declares a composite number incorrectly prime with a probability of at most
-    1/4^`probabilistic_tolerance`. Both the Fermat's little theorem and the sequence test contribute equally to this
+    1/4^`witnesses`. Both the Fermat's little theorem and the sequence test contribute equally to this
     probability.
     :param n: Number of choice to be primality tested
-    :param probabilistic_tolerance: Sets tolerance of falsely concluding a prime.
-    Time complexity: O(`probabilistic_tolerance` * log^3(n))
+    :param witnesses: Sets tolerance of falsely concluding a prime.
+    Time complexity: O(`witnesses` * log^3(n))
     :return: Enum of corresponding primality
     """
     if n == 2: return PROBABLY_PRIME
@@ -31,8 +31,8 @@ def primality_test(n: int, probabilistic_tolerance: int = 15) -> Primality:
         s += 1
         t //= 2
 
-    # run `probabilistic_tolerance`-times random tests
-    for rand_witness in (randint(2, n - 1) for _ in range(probabilistic_tolerance)):
+    # run `witnesses`-times random tests
+    for rand_witness in (randint(2, n - 1) for _ in range(witnesses)):
 
 
 
