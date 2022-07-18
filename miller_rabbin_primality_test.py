@@ -34,8 +34,6 @@ def primality_test(n: int, witnesses: int = 15) -> Primality:
     # run `witnesses`-times random tests
     for rand_witness in (randint(2, n - 1) for _ in range(witnesses)):
 
-
-
         # Design note: Expensive mod_exp op only done once at the start of the sequence test as subsequent sequence
         # elements rely upon the fact that: ( x^(2^(i-1)) * x^(2^(i-1)) ) mod z = ( x^(2^i) ) mod z
         previous_sequence = mod_exp(rand_witness, t, n)
