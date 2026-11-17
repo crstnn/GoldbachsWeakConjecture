@@ -24,11 +24,13 @@ def disprove_conjecture(n) -> tuple[int, int, int] | bool:
     if n <= 7 or n % 2 == 0:
         raise Exception("{} does not satisfy the precondition for Goldbach's weak conjecture".format(n))
 
-    for i in range(3, n - 5, 2):
+    # i <= j <= k keeps k >= 3
+    for i in range(3, n // 3 + 1, 2):
         if not primality_test(i).value: continue
-        for j in range(i, n - 2, 2):
-            if primality_test(j).value and primality_test(n - j - i).value:
-                return i, j, n - j - i
+        for j in range(i, (n - i) // 2 + 1, 2):
+            k = n - i - j
+            if primality_test(j).value and primality_test(k).value:
+                return i, j, k
 
     return False  # Goldbach's weak conjecture violated
 
@@ -38,7 +40,7 @@ def disprove_conjecture_cli() -> None:
     number = int(sys.argv[1])
     triplet = disprove_conjecture(number)
     with open("output_threeprime.txt", "w") as output_file:
-        output_file.write("{} {} {}".format(*triplet))
+        output_file.write("{} {} {}".format(*triplet) if triplet else "No triple found: conjecture disproved")
 
 
 if __name__ == "__main__":
