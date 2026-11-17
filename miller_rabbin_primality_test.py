@@ -1,8 +1,8 @@
 #!/usr/bin/python3.10
 from random import randint
 
-from GoldbachsWeakConjecture.modular_exponentiation import mod_exp
-from GoldbachsWeakConjecture.prime_enum import Primality
+from modular_exponentiation import mod_exp
+from prime_enum import Primality
 
 globals().update(Primality.__members__)  # puts Primality in the namespace of this file
 
